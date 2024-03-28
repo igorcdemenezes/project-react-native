@@ -1,5 +1,5 @@
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import EventsListPage from './src/pages/EventsListPage';
+import EventsPage from './src/pages/EventsPage';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -24,7 +24,7 @@ export default function App() {
       <Drawer.Navigator>
         {/* registrar a rota home que ira navegar para a pagina, que é um componente, EventsPage */}
         <Drawer.Screen name={Routes.Home} component={AboutPage}/>
-        <Drawer.Screen name={Routes.EventsListPage} component={EventsListPage}/>
+        <Drawer.Screen name={Routes.EventsPage} component={EventsPage}/>
         {/* <Drawer.Screen name={Routes.EventPage} component={EventPage}/> */}
       </Drawer.Navigator>
     </NavigationContainer>

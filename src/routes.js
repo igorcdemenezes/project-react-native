@@ -2,8 +2,9 @@
 
 const Routes = {
     Home: 'about',
-    EventsListPage: 'events list',
-    EventPage: 'event'
+    EventsPage: 'events', //página geral
+    EventsListPage: 'events_list', //página de lista
+    EventsShowPage: 'events_show' //o evento em si
 }
 
 export default Routes;
