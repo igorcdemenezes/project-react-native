@@ -1,4 +1,5 @@
 import {
+  ActivityIndicator,
   Image,
   Pressable,
   ScrollView,
@@ -6,7 +7,7 @@ import {
   Text,
   View,
 } from "react-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import DetailsContainer from "./DetailsContainer";
@@ -19,9 +20,13 @@ export default function ShowContainer(props) {
   const { params } = props.route;
 
   // const { name, description, images } = event;
-  const { name, description, images, hotels } = params;
+  // const { name, description, images, hotels } = params;
+  const { id } = params;
+
+  const [event, setEvent] = useState(null);
 
   const [image, setImage] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
   const [msg, setMsg] = useState(null);
 
   const voltarImage = () => {
@@ -42,18 +47,39 @@ export default function ShowContainer(props) {
     );
   }
 
+  useEffect(() => {
+    // setIsLoading(true);
+    const url = "https://aula-reactnative-22-02-default-rtdb.firebaseio.com";
+    const resource = "events";
+    fetch(`${url}/${resource}/${id}.json`)
+      .then((res) => res.json())
+      .then((event) => {
+        setEvent({
+          _id: id,
+          ...event,
+        });
+      })
+      .catch((error) => setMsg(error.message))
+      .finally(setIsLoading(false));
+  }, []);
+
   return (
-    <Tabs.Navigator>
-      <Tabs.Screen name="details">
-        {() => <DetailsContainer event={params} />}
-      </Tabs.Screen>
-      <Tabs.Screen name="gallery">
-        {() => <GalleryContainer images={images} />}
-      </Tabs.Screen>
-      <Tabs.Screen name="hotels">
-        {() => <HotelsContainer hotels={hotels} />}
-      </Tabs.Screen>
-    </Tabs.Navigator>
+    <>
+      {isLoading && <ActivityIndicator />}
+      {event && (
+        <Tabs.Navigator>
+          <Tabs.Screen name="details">
+            {() => <DetailsContainer event={event} />}
+          </Tabs.Screen>
+          <Tabs.Screen name="gallery">
+            {() => <GalleryContainer images={event.images} />}
+          </Tabs.Screen>
+          <Tabs.Screen name="hotels">
+            {() => <HotelsContainer hotels={event.hotels} />}
+          </Tabs.Screen>
+        </Tabs.Navigator>
+      )}
+    </>
   );
 }
 

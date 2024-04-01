@@ -56,7 +56,7 @@ export default function EventsPage(props) {
   function selectEvent(event) {
     // setSelectedEvent(event);
     // navigation
-    navigation.navigate(Routes.EventsShowPage, event); //String -> Rota (name)
+    navigation.navigate(Routes.EventsShowPage, { id: event._id }); //String -> Rota (name)
   }
 
   // function renderItem({ item }) {

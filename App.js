@@ -7,6 +7,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import EventPage from './src/pages/EventPage';
 import AboutPage from './src/pages/AboutPage';
 import Routes from './src/routes';
+import EventInsertPage from './src/pages/EventInsertPage';
+import PhotosPage from './src/pages/PhotosPage';
 
 // NavigationContainer
 // Navigator / NativeStackNavigator
@@ -19,13 +21,22 @@ const Drawer = createDrawerNavigator();
 
 
 export default function App() {
+
+  const screensProps = [
+    { name: Routes.Home, component: AboutPage, options: { title: "Sobre o App" } },
+    { name: Routes.EventsPage, component: EventsPage, options: { title: "Eventos" } },
+    { name: Routes.EventInsertPage, component: EventInsertPage, options: { title: "Novo evento" } },
+    { name: Routes.PhotosPage, component: PhotosPage, options: { title: "Galeria" } },
+  ];
+
   return (
     <NavigationContainer>
       <Drawer.Navigator>
-        {/* registrar a rota home que ira navegar para a pagina, que é um componente, EventsPage */}
-        <Drawer.Screen name={Routes.Home} component={AboutPage}/>
-        <Drawer.Screen name={Routes.EventsPage} component={EventsPage}/>
-        {/* <Drawer.Screen name={Routes.EventPage} component={EventPage}/> */}
+        {screensProps.map(
+          (props, index) =>
+            <Drawer.Screen key={"drawer_screen_" + index} {...props} />
+        )
+        }
       </Drawer.Navigator>
     </NavigationContainer>
   );
