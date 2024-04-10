@@ -22,8 +22,7 @@ export default function EventCard({ item, action }) {
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: 2,
-    marginVertical: 1,
-    // padding: 2,
+    marginVertical: 5,
     flexDirection: "row",
     shadowColor: "#000",
     shadowRadius: 3.84,
@@ -33,10 +32,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     elevation: 1,
-    // width: '100%',
-    // borderColor: 'blue',
-    // borderWidth: 2,
-    // flexShrink: 1,
   },
   imageContainer: {},
   cardImage: {

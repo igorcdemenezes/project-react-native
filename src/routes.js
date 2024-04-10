@@ -2,9 +2,9 @@
 
 const Routes = {
     Home: 'about',
-    EventsPage: 'events', //página geral
-    EventsListPage: 'events_list', //página de lista
-    EventsShowPage: 'events_show', //o evento em si
+    EventsPage: 'events',
+    EventsListPage: 'events_list',
+    EventsShowPage: 'events_show',
     EventInsertPage: 'event_insert_page',
     PhotosPage: 'photos_page',
 }
