@@ -1,15 +1,15 @@
 import { Camera } from "expo-camera";
 import { useEffect, useState } from "react";
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View, Image } from "react-native";
 import app from "../../Firebase";
-import { getStorage, ref, uploadBytes, uploadString } from "firebase/storage";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
 
 export default function CameraContainer() {
   const [hasPermission, setPermission] = useState(false);
-  // const [hasPermission, setPermission] = Camera.useCameraPermissions();
   const [camera, setCamera] = useState(null);
   const [uri, setUri] = useState(null);
   const [msg, setMsg] = useState(null);
+  // const [hasPermission, setPermission] = Camera.useCameraPermissions();
 
   async function requestCamera() {
     const permission = await Camera.requestCameraPermissionsAsync();
@@ -39,8 +39,8 @@ export default function CameraContainer() {
   }
 
   async function uploadPhoto(photoRef) {
-    const response = await fetch(uri); // pega imagem através da uri
-    const photo = await response.blob(); // transforma a imagem em um array de bytes
+    const response = await fetch(uri);
+    const photo = await response.blob();
     const uploadResult = await uploadBytes(photoRef, photo);
     if (uploadResult) setUri(null);
     else setMsg("Algo deu errado!");

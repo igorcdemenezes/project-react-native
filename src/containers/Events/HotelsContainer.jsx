@@ -1,19 +1,17 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { View, StyleSheet, Text, FlatList } from "react-native";
 import HotelCard from "../../components/HotelCard";
 
 export default function HotelsContainer({ hotels }) {
-  //pega uma lista passada por parâmetro, aplica um map sobre ela, pegando cada um dos elementos
   return (
     <View style={styles.container}>
-      {/* {hotels.map((hotel) => {
-        //map tem que ter um return
-        return <Text>{hotel.name}</Text>;
-      })} */}
       <FlatList
         data={hotels}
         renderItem={({ item }) => <HotelCard hotel={item} />}
-        keyExtractor={(item) => "hotel_" + item.name} //api do teste saiu sem id
+        keyExtractor={(item) => "hotel_" + item.name}
       />
+      {/* {hotels.map( hotel => {
+                return <Text>{hotel.name}</Text>
+            })} */}
     </View>
   );
 }
@@ -21,6 +19,6 @@ export default function HotelsContainer({ hotels }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: "blue",
+    // backgroundColor: 'blue',
   },
 });

@@ -7,20 +7,16 @@ export default function ListContainer({ events, action }) {
   }
 
   if (events.length > 0) {
-    // return events.map((event, index) => (
-    //   <EventCard key={"evento_" + index} item={event} action={selectEvent} />
-    // ));
     return (
       <FlatList
         style={styles.container}
         data={events}
-        // renderItem={EventCard}
         renderItem={renderItem}
         keyExtractor={(item) => item._id}
       />
     );
   } else {
-    return <Text>Nenhum evento cadastrado</Text>;
+    return <Text>Nenhum evento cadastrado!</Text>;
   }
 }
 

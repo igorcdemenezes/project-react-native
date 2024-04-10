@@ -1,6 +1,6 @@
-import { Text, ScrollView, Image, View, StyleSheet } from "react-native";
+import { View, Image, Text, ScrollView, StyleSheet } from "react-native";
 
-export default function DetailsContainer({event}) {
+export default function DetailsContanier({ event }) {
   const { name, description, images } = event;
   return (
     <View style={styles.container}>
@@ -14,17 +14,16 @@ export default function DetailsContainer({event}) {
 }
 
 const styles = StyleSheet.create({
-    container: {
-      margin: 4,
-    },
-    image: {
-      width: "100%",
-      height: 150,
-      resizeMode: "cover",
-    },
-    imageController: {
-      flexDirection: "row",
-      justifyContent: "space-between",
-    },
-  });
-  
+  container: {
+    margin: 4,
+  },
+  image: {
+    width: "100%",
+    height: 150,
+    resizeMode: "cover",
+  },
+  imageController: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+});

@@ -1,5 +1,4 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Text, View } from "react-native";
 import GalleryContainer from "../containers/Photos/GalleryContainer";
 import CameraContainer from "../containers/Photos/CameraContainer";
 

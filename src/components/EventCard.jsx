@@ -1,9 +1,6 @@
-// import { useNavigation } from "@react-navigation/native";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 
 export default function EventCard({ item, action }) {
-
-  // const navigation = useNavigation();
   const { name, price, images } = item;
   const imgConfig = { uri: images[0] };
 
@@ -11,7 +8,7 @@ export default function EventCard({ item, action }) {
     <Pressable onPress={() => action(item)}>
       <View style={styles.container}>
         <Image style={styles.cardImage} source={imgConfig} />
-        <View tyle={styles.cardInfo}>
+        <View style={styles.cardInfo}>
           <Text style={styles.listItem}>{name}</Text>
         </View>
         <View>
@@ -34,10 +31,10 @@ const styles = StyleSheet.create({
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.25,
     elevation: 1,
-    // width: "100%",
-    // borderColor: "blue",
+    // width: '100%',
+    // borderColor: 'blue',
     // borderWidth: 2,
     // flexShrink: 1,
   },

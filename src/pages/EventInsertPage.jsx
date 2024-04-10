@@ -6,7 +6,7 @@ export default function EventInsertPage() {
   const url = "https://aula-reactnative-22-02-default-rtdb.firebaseio.com";
   const resource = "events";
 
-  const [name, setName] = useState(""); //eventos reais do aplicativo
+  const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [date, setDate] = useState("");

@@ -1,4 +1,4 @@
-import { Image, ScrollView, StyleSheet, View, Text } from "react-native";
+import { Image, Text, StyleSheet, ScrollView } from "react-native";
 
 export default function GalleryContainer({ images }) {
   return (
@@ -6,7 +6,7 @@ export default function GalleryContainer({ images }) {
       {images.map((uri, index) => {
         return (
           <Image
-            key={"gallery" + index}
+            key={"gallery_" + index}
             style={styles.image}
             source={{ uri }}
           />
@@ -19,7 +19,6 @@ export default function GalleryContainer({ images }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: "blue",
   },
   image: {
     height: 200,

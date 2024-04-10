@@ -1,16 +1,8 @@
-import {
-  ActivityIndicator,
-  Image,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
 import { useEffect, useState } from "react";
-
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { ActivityIndicator, ScrollView, Text, View } from "react-native";
+import { Image, StyleSheet, Pressable } from "react-native";
 import DetailsContainer from "./DetailsContainer";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import GalleryContainer from "./GalleryContainer";
 import HotelsContainer from "./HotelsContainer";
 
@@ -18,37 +10,37 @@ const Tabs = createBottomTabNavigator();
 
 export default function ShowContainer(props) {
   const { params } = props.route;
-
-  // const { name, description, images } = event;
-  // const { name, description, images, hotels } = params;
   const { id } = params;
+  console.log(id);
 
   const [event, setEvent] = useState(null);
-
   const [image, setImage] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [msg, setMsg] = useState(null);
 
   const voltarImage = () => {
-    setMsg("Voltar");
-    if (image > 0) setImage(image - 1);
+    if (image > 0) {
+      setMsg("Voltar");
+      setImage(image - 1);
+    }
   };
 
   const avancarImage = () => {
-    setMsg("Avançar");
-    if (image < image.length - 1) setImage(image + 1);
+    if (image < image.length - 1) {
+      setMsg("Avançar");
+      setImage(image + 1);
+    }
   };
 
-  function btnImageController(label, action) {
+  function btnImageControler(label, action) {
     return (
-      <Pressable>
-        <Text onPress={() => action()}>{label}</Text>
+      <Pressable onPress={() => action()}>
+        <Text>{label}</Text>
       </Pressable>
     );
   }
 
   useEffect(() => {
-    // setIsLoading(true);
     const url = "https://aula-reactnative-22-02-default-rtdb.firebaseio.com";
     const resource = "events";
     fetch(`${url}/${resource}/${id}.json`)
@@ -61,13 +53,17 @@ export default function ShowContainer(props) {
       })
       .catch((error) => setMsg(error.message))
       .finally(setIsLoading(false));
-  }, []);
+  }, [id]);
 
   return (
     <>
       {isLoading && <ActivityIndicator />}
       {event && (
-        <Tabs.Navigator>
+        <Tabs.Navigator
+          screenOptions={{
+            headerShown: false,
+          }}
+        >
           <Tabs.Screen name="details">
             {() => <DetailsContainer event={event} />}
           </Tabs.Screen>
